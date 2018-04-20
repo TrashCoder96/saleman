@@ -18,8 +18,10 @@ spring:
         show_sql: true
         generate-ddl: true
         hibernate:
-            ddl-auto: update
+            ddl-auto: validate
             naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
         properties:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
+    liquibase:
+        change-log: classpath:/db/changelog/db.changelog-master.yaml
