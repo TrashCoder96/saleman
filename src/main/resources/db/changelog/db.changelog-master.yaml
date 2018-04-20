@@ -17,3 +17,30 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
+  - changeSet:
+      id: 2
+      author: Timofeev Ivan
+      changes:
+        - createTable:
+            tableName: ROLE_DTO
+            columns:
+              - column:
+                  name: name
+                  type:  varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+        - addColumn:
+            tableName: CREDENTIALS_DTO
+            columns:
+              - column:
+                  name: ROLE_ID
+                  type:  varchar(255)
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+              baseColumnNames: ROLE_ID
+              baseTableName: CREDENTIALS_DTO
+              constraintName: FK_CREDENTIALS_ROLE
+              referencedColumnNames: NAME
+              referencedTableName: ROLE_DTO
