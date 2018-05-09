@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+     id: 09052018_2
+     author: Timofeev Ivan
+     changes:
+     - insert:
+            tableName: ROLE_DTO
+            columns:
+             - column:
+                name: name
+                type: varchar(255)
+                value: ADMIN_ROLE
+     - insert:
+            tableName: ROLE_DTO
+            columns:
+             - column:
+                name: name
+                type: varchar(255)
+                value: USER_ROLE
+
