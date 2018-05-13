@@ -26,6 +26,6 @@ spring:
     liquibase:
         change-log: classpath:/db/db.changelog-master.yaml
 jwt:
-    secret: 1c1c1c
-    expiration: 3600
+    secret: amelas
+    expiration: 80000
     header: token
