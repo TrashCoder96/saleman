@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
+import ru.saleman.security.JwtTokenRo;
 import ru.saleman.security.JwtTokenUtil;
 
 /**
@@ -30,7 +31,8 @@ public class AuthenticationRestController {
     private UserDetailsService userDetailsService;
 
     @RequestMapping(value = "/token", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestParam String username, @RequestParam String password) throws AuthenticationException {
+    public ResponseEntity<?> createAuthenticationToken(@RequestParam String username,
+                                                       @RequestParam String password) throws AuthenticationException {
         final Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         username,
@@ -40,7 +42,9 @@ public class AuthenticationRestController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(token);
+        JwtTokenRo jwtTokenRo = new JwtTokenRo();
+        jwtTokenRo.setToken(token);
+        return ResponseEntity.ok(jwtTokenRo);
     }
 
 }
