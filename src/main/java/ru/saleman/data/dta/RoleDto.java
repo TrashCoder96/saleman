@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by asus-pc on 21.04.2018.
+ * Created by Ivan Timofeev on 21.04.2018.
  */
 @Entity
 @Table(name="ROLE_DTO")

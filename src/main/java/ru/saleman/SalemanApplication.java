@@ -9,6 +9,7 @@ import ru.saleman.data.dta.CredentialsDto;
 import ru.saleman.data.dta.RoleDto;
 
 import javax.annotation.PostConstruct;
+import javax.transaction.Transactional;
 
 @SpringBootApplication
 public class SalemanApplication {
@@ -20,7 +21,13 @@ public class SalemanApplication {
 	private RoleRepository roleRepository;
 
 	@PostConstruct
+	@Transactional
 	public void post() {
+		CredentialsDto cs = new CredentialsDto();
+		cs.setPassword("ivan");
+		cs.setUsername("ivan");
+		cs.setRole(roleRepository.findById("USER_ROLE").get());
+		credentialsRepository.save(cs);
 	}
 
 	public static void main(String[] args) {

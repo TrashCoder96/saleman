@@ -9,6 +9,13 @@ databaseChangeLog:
              - column:
                 name: name
                 type: varchar(255)
+                value: SUPERADMIN_ROLE
+     - insert:
+            tableName: ROLE_DTO
+            columns:
+             - column:
+                name: name
+                type: varchar(255)
                 value: ADMIN_ROLE
      - insert:
             tableName: ROLE_DTO

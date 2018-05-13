@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import ru.saleman.data.dta.CredentialsDto;
 
 /**
- * Created by asus-pc on 20.04.2018.
+ * Created by Ivan Timofeev on 20.04.2018.
  */
 @Repository
 public interface CredentialsRepository extends JpaRepository<CredentialsDto, String> {

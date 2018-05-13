@@ -8,7 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: username
-                  type:  varchar(255)
+                  type: varchar(255)
                   constraints:
                     primaryKey: true
                     nullable: false
