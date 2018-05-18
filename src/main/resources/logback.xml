@@ -26,8 +26,7 @@
         <appender-ref ref="COMMON" />
     </logger>
 
-    <root>
-        <lavel value="info" />
+    <root level="info">
         <appender-ref ref="COMMON" />
     </root>
 
