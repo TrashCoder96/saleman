@@ -28,7 +28,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public GetAllAccountsResponseRo allAccountsRequestRo(@RequestParam("id") Long id) {
+    public GetAllAccountsResponseRo allAccountsRequestRo() {
         return null;
     }
 
