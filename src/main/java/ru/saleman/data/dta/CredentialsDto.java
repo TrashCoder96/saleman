@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "CREDENTIALS_DTO")
-public class CredentialsDto {
+public class CredentialsDto extends AbstractDto {
 
     @Id
     private String username;

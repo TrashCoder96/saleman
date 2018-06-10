@@ -27,6 +27,7 @@
 		<tomcat.scope>provided</tomcat.scope>
 		<org.springframework.security.spring-security-jwt.version>1.0.9.RELEASE</org.springframework.security.spring-security-jwt.version>
 		<io.jsonwebtoken.jjwt.version>0.6.0</io.jsonwebtoken.jjwt.version>
+		<org.modelmapper.version>0.7.4</org.modelmapper.version>
 	</properties>
 
 	<dependencies>
@@ -86,6 +87,11 @@
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt</artifactId>
 			<version>${io.jsonwebtoken.jjwt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>${org.modelmapper.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -3,7 +3,7 @@ package ru.saleman.rest.ro;
 /**
  * Created by Ivan Timofeev on 10.06.2018.
  */
-public class CreateAccountRequestRo extends AbstactRo {
+public class CreateAccountRequestRo extends AbstractRo {
 
     private AccountRo newAccount;
 
