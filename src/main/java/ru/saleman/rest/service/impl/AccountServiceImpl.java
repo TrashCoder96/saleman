@@ -3,7 +3,7 @@ package ru.saleman.rest.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.saleman.data.dta.CredentialsDto;
+import ru.saleman.data.dto.CredentialsDto;
 import ru.saleman.rest.ro.AccountRo;
 import ru.saleman.rest.service.AccountService;
 

@@ -1,6 +1,6 @@
 package ru.saleman.rest.ro.transformer;
 
-import ru.saleman.data.dta.AbstractDto;
+import ru.saleman.data.dto.AbstractDto;
 import ru.saleman.rest.ro.AbstractRo;
 
 import java.util.List;

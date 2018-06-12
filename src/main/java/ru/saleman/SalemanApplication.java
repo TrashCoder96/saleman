@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.saleman.data.CredentialsRepository;
 import ru.saleman.data.RoleRepository;
-import ru.saleman.data.dta.CredentialsDto;
+import ru.saleman.data.dto.CredentialsDto;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;

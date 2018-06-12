@@ -1,4 +1,4 @@
-package ru.saleman.data.dta;
+package ru.saleman.data.dto;
 
 import javax.persistence.*;
 
@@ -10,6 +10,10 @@ import javax.persistence.*;
 public class CredentialsDto extends AbstractDto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String username;
 
     @Column
@@ -18,6 +22,14 @@ public class CredentialsDto extends AbstractDto {
     @ManyToOne
     @JoinColumn(name="ROLE_ID")
     private RoleDto role;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;

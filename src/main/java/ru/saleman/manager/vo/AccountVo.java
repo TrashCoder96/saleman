@@ -1,26 +1,23 @@
-package ru.saleman.security;
+package ru.saleman.manager.vo;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created by asus-pc on 18.11.2017.
+ * Created by itimofeev on 12.06.2018.
  */
-public class JwtUserDetails implements UserDetails {
+public class AccountVo extends AbstractVo implements UserDetails {
+
+    private String id;
 
     private String username;
 
     private String password;
 
-    private Collection<? extends GrantedAuthority> authorities;
-
-    public JwtUserDetails(String username, String password, Collection<? extends GrantedAuthority> authorities) {
-        this.username = username;
-        this.password = password;
-        this.authorities = authorities;
-    }
+    private Collection<? extends GrantedAuthority> authorities = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -39,21 +36,37 @@ public class JwtUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return false;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

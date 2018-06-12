@@ -1,7 +1,7 @@
 package ru.saleman.rest.ro.transformer;
 
 import org.springframework.stereotype.Component;
-import ru.saleman.data.dta.CredentialsDto;
+import ru.saleman.data.dto.CredentialsDto;
 import ru.saleman.rest.ro.AccountRo;
 
 /**

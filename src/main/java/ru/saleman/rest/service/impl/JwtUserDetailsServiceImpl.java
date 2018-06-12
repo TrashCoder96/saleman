@@ -1,16 +1,14 @@
-package ru.saleman.security;
+package ru.saleman.rest.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.saleman.data.CredentialsRepository;
-import ru.saleman.data.dta.CredentialsDto;
+import ru.saleman.manager.AccountManager;
+import ru.saleman.manager.vo.AccountVo;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
 
 /**
  * Created by asus-pc on 18.11.2017.
@@ -19,15 +17,14 @@ import java.util.Arrays;
 public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private CredentialsRepository credentialsRepository;
+    private AccountManager accountManager;
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        CredentialsDto credentialsDto = credentialsRepository.findById(username).get();
-        if (credentialsDto == null)
+        AccountVo user = accountManager.getAccount(username);
+        if (user == null)
             throw new UsernameNotFoundException(String.format("User %s not found", username));
-        JwtUserDetails userDetails = new JwtUserDetails(credentialsDto.getUsername(), credentialsDto.getPassword(), Arrays.asList(new  SimpleGrantedAuthority("ROLE_USER")));
-        return userDetails;
+        return user;
     }
 }

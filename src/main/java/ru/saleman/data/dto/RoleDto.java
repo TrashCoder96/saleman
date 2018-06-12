@@ -1,4 +1,4 @@
-package ru.saleman.data.dta;
+package ru.saleman.data.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

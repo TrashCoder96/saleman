@@ -1,4 +1,4 @@
-package ru.saleman.rest;
+package ru.saleman.rest.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
+import ru.saleman.rest.service.LoginService;
 import ru.saleman.security.JwtTokenRo;
 import ru.saleman.security.JwtTokenUtil;
 
@@ -22,28 +23,14 @@ import ru.saleman.security.JwtTokenUtil;
 public class AuthenticationRestController {
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtTokenUtil jwtTokenUtil;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
+    private LoginService loginService;
 
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestParam String username,
                                                        @RequestParam String password) throws AuthenticationException {
-        final Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        username,
-                        password
-                )
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        final String token = jwtTokenUtil.generateToken(userDetails);
+
         JwtTokenRo jwtTokenRo = new JwtTokenRo();
-        jwtTokenRo.setToken(token);
+        jwtTokenRo.setToken(loginService.login(username, password));
         return ResponseEntity.ok(jwtTokenRo);
     }
 

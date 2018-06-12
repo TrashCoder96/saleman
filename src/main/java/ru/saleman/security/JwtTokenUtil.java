@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import ru.saleman.manager.vo.AccountVo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -125,7 +126,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
-        JwtUserDetails user = (JwtUserDetails) userDetails;
+        AccountVo user = (AccountVo) userDetails;
         final String username = getUsernameFromToken(token);
         final Date created = getIssuedAtDateFromToken(token);
         final Date expiration = getExpirationDateFromToken(token);
