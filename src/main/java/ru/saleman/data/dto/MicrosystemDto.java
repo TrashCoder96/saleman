@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by itimofeev on 12.06.2018.
  */
 @Entity
-@Table(name = "MCIROSYSTEM_DTO")
+@Table(name = "MICROSYSTEM_DTO")
 public class MicrosystemDto extends AbstractDto {
 
     @Id
@@ -16,7 +16,8 @@ public class MicrosystemDto extends AbstractDto {
     @Column
     private String name;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "ADMIN_ID")
     private CredentialsDto admin;
 
     public Long getId() {

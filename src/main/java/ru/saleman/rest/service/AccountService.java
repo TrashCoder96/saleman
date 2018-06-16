@@ -9,9 +9,11 @@ import java.util.List;
  */
 public interface AccountService {
 
-    void create(AccountRo account);
+    AccountRo create(String username, String password);
 
-    void update(AccountRo account);
+    void updateUsername(Long id, String username);
+
+    void updatePassword(Long id, String password);
 
     void delete(Long id);
 

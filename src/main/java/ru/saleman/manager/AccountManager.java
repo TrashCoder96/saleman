@@ -7,6 +7,8 @@ import ru.saleman.manager.vo.AccountVo;
  */
 public interface AccountManager {
 
+    AccountVo getAccount(Long id);
+
     AccountVo getAccount(String username);
 
     AccountVo createAccountInMicrosystem(String username, String password);

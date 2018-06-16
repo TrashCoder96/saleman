@@ -5,14 +5,23 @@ package ru.saleman.rest.ro;
  */
 public class CreateAccountRequestRo extends AbstractRo {
 
-    private AccountRo newAccount;
+    private String username;
 
-    public AccountRo getNewAccount() {
-        return newAccount;
+    private String password;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setNewAccount(AccountRo newAccount) {
-        this.newAccount = newAccount;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

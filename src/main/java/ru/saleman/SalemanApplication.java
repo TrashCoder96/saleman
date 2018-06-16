@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.saleman.data.CredentialsRepository;
 import ru.saleman.data.RoleRepository;
 import ru.saleman.data.dto.CredentialsDto;
+import ru.saleman.util.SalemanConstants;
 
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
@@ -25,7 +26,7 @@ public class SalemanApplication {
 		CredentialsDto cs = new CredentialsDto();
 		cs.setPassword("ivan");
 		cs.setUsername("ivan");
-		cs.setRole(roleRepository.findById("USER_ROLE").get());
+		cs.setRole(roleRepository.findById(SalemanConstants.Role.USER).get());
 		credentialsRepository.save(cs);
 	}
 

@@ -19,7 +19,10 @@ public class AccountController {
 
     @RequestMapping(value = "/account", method = RequestMethod.PUT)
     public CreateAccountResponseRo createAccount(CreateAccountRequestRo request) {
-        return null;
+        AccountRo account = accountService.create(request.getUsername(), request.getPassword());
+        CreateAccountResponseRo response = new CreateAccountResponseRo();
+        response.setAccount(account);
+        return new CreateAccountResponseRo();
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
@@ -29,7 +32,8 @@ public class AccountController {
 
     @RequestMapping(value = "/account", method = RequestMethod.DELETE)
     public DeleteAccountResponseRo deleteAccount(@RequestParam("id") Long id) {
-        return null;
+        accountService.delete(id);
+        return new DeleteAccountResponseRo();
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
@@ -39,7 +43,9 @@ public class AccountController {
 
     @RequestMapping(value = "/account/{id}", method = RequestMethod.GET)
     public GetAccountResponseRo getAccount(@RequestParam("id") Long id) {
-        return null;
+        GetAccountResponseRo response = new GetAccountResponseRo();
+        response.setAccount(accountService.get(id));
+        return response;
     }
 
 }

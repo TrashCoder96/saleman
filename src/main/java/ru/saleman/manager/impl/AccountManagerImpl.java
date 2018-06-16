@@ -34,6 +34,12 @@ public class AccountManagerImpl implements AccountManager {
     @Autowired
     private ModelMapper modelMapper;
 
+
+    @Override
+    public AccountVo getAccount(Long id) {
+        return modelMapper.map(credentialsRepository.getOne(id), AccountVo.class);
+    }
+
     @Override
     @Transactional(readOnly = true)
     public AccountVo getAccount(String username) {
@@ -47,7 +53,7 @@ public class AccountManagerImpl implements AccountManager {
         CredentialsDto credentialsDto = new CredentialsDto();
         credentialsDto.setUsername(username);
         credentialsDto.setPassword(password);
-        credentialsDto.setRole(roleRepository.getOne(SalemanConstants.Role.USER));
+        credentialsDto.setRole(roleRepository.getOne(SalemanConstants.Role.OPERATOR));
         microsystem.setAdmin(credentialsDto);
         credentialsDto = credentialsRepository.save(credentialsDto);
         microsystemRepository.save(microsystem);
