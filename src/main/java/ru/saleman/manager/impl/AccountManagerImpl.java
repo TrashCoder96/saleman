@@ -13,8 +13,12 @@ import ru.saleman.data.dto.CredentialsDto;
 import ru.saleman.data.dto.MicrosystemDto;
 import ru.saleman.manager.AccountManager;
 import ru.saleman.manager.vo.AccountVo;
+import ru.saleman.manager.vo.MicrosystemVo;
 import ru.saleman.util.SalemanConstants;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by itimofeev on 12.06.2018.
@@ -49,8 +53,8 @@ public class AccountManagerImpl implements AccountManager {
 
     @Override
     @Transactional
-    public AccountVo createAccountInMicrosystem(String username, String password) {
-        MicrosystemDto microsystem = microsystemRepository.getMicrosystemByCredentialsId(getCurrentAccount().getId());
+    public AccountVo createAccountInMicrosystem(String username, String password, Long microsystemId) {
+        MicrosystemDto microsystem = microsystemRepository.getOne(microsystemId);
         CredentialsDto credentialsDto = new CredentialsDto();
         credentialsDto.setUsername(username);
         credentialsDto.setPassword(password);
@@ -79,6 +83,22 @@ public class AccountManagerImpl implements AccountManager {
         UsernamePasswordAuthenticationToken authentication =
                 (UsernamePasswordAuthenticationToken)SecurityContextHolder.getContext().getAuthentication();
         return getAccount(authentication.getName());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<AccountVo> getAccountsByMicrosystem(Long microsystemId) {
+        return credentialsRepository
+                .findCredentialsDtosByMicrosystemId(microsystemId)
+                .stream()
+                .map(cd -> modelMapper.map(cd, AccountVo.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public MicrosystemVo getMicrosystemByAccountId(Long accountId) {
+        return modelMapper.map(microsystemRepository.getMicrosystemByCredentialsId(accountId), MicrosystemVo.class);
     }
 
 

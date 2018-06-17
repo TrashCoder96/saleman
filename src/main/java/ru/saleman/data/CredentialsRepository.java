@@ -6,6 +6,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import ru.saleman.data.dto.CredentialsDto;
 
+import java.util.List;
+
 /**
  * Created by Ivan Timofeev on 20.04.2018.
  */
@@ -14,5 +16,7 @@ public interface CredentialsRepository extends JpaRepository<CredentialsDto, Lon
 
     @Query("SELECT cd FROM CredentialsDto cd WHERE cd.username = :username")
     CredentialsDto findCredentialsDtoByUsername(@Param("username") String username);
+
+    List<CredentialsDto> findCredentialsDtosByMicrosystemId(@Param("microsystemId") Long microsystemId);
 
 }

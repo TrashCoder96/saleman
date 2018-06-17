@@ -19,8 +19,8 @@ public class AccountController {
     public CreateAccountResponseRo createAccount(@RequestBody CreateAccountRequestRo request) {
         AccountRo account = accountService.create(request.getUsername(), request.getPassword());
         CreateAccountResponseRo response = new CreateAccountResponseRo();
-        response.setAccount(account);
-        return new CreateAccountResponseRo();
+        response.setId(account.getId());
+        return response;
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
@@ -36,11 +36,13 @@ public class AccountController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public GetAllAccountsResponseRo allAccountsRequestRo() {
-        return null;
+        GetAllAccountsResponseRo responseRo = new GetAllAccountsResponseRo();
+        responseRo.setAccounts(accountService.getAll());
+        return responseRo;
     }
 
     @RequestMapping(value = "/account/{id}", method = RequestMethod.GET)
-    public GetAccountResponseRo getAccount(@RequestParam("id") Long id) {
+    public GetAccountResponseRo getAccount(@PathVariable("id") Long id) {
         GetAccountResponseRo response = new GetAccountResponseRo();
         response.setAccount(accountService.get(id));
         return response;

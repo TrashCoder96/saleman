@@ -5,13 +5,13 @@ package ru.saleman.rest.ro;
  */
 public class CreateAccountResponseRo extends AbstractRo {
 
-    private AccountRo account;
+    private Long id;
 
-    public AccountRo getAccount() {
-        return account;
+    public Long getId() {
+        return id;
     }
 
-    public void setAccount(AccountRo account) {
-        this.account = account;
+    public void setId(Long id) {
+        this.id = id;
     }
 }

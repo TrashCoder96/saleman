@@ -22,6 +22,7 @@ public class AccountDtoVoConverter extends AbstractConverter<CredentialsDto, Acc
         accountVo.setUsername(credentialsDto.getUsername());
         GrantedAuthority authority = new SimpleGrantedAuthority(roleName);
         accountVo.getAuthorities().add(authority);
+        accountVo.setId(credentialsDto.getId());
         return accountVo;
     }
 }
