@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="17062018_2" author="Timofeev Ivan">
+        <addColumn tableName="CREDENTIALS_DTO">
+            <column name="MICROSYSTEM_ID" type="long">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+        <addColumn tableName="CREDENTIALS_DTO">
+            <column name="ADMIN" type="boolean"></column>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="CREDENTIALS_DTO" baseColumnNames="MICROSYSTEM_ID" constraintName="FK_CREDENTIALS_MICROSYSTEM" referencedTableName="MICROSYSTEM_DTO"
+                                 referencedColumnNames="ID" />
+        <dropForeignKeyConstraint baseTableName="MICROSYSTEM_DTO" constraintName="FK_MICROSYSTEM_CREDENTIALS" />
+        <dropNotNullConstraint tableName="MICROSYSTEM_DTO" columnName="ADMIN_ID" columnDataType="long" />
+        <dropColumn tableName="MICROSYSTEM_DTO" columnName="ADMIN_ID" />
+    </changeSet>
+
+</databaseChangeLog>

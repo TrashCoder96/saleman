@@ -30,13 +30,15 @@ public class SalemanApplication {
 	public void post() {
 		MicrosystemDto microsystemDto = new MicrosystemDto();
 		microsystemDto.setName("ivan_company");
+		microsystemRepository.save(microsystemDto);
+
 		CredentialsDto cs = new CredentialsDto();
 		cs.setPassword("ivan");
 		cs.setUsername("ivan");
 		cs.setRole(roleRepository.findById(SalemanConstants.Role.USER).get());
+		cs.setMicrosystem(microsystemDto);
+		cs.setAdmin(true);
 		credentialsRepository.save(cs);
-		microsystemDto.setAdmin(cs);
-		microsystemRepository.save(microsystemDto);
 	}
 
 	public static void main(String[] args) {

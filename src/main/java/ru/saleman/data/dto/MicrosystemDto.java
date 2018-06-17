@@ -16,10 +16,6 @@ public class MicrosystemDto extends AbstractDto {
     @Column
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "ADMIN_ID")
-    private CredentialsDto admin;
-
     public Long getId() {
         return id;
     }
@@ -36,11 +32,4 @@ public class MicrosystemDto extends AbstractDto {
         this.name = name;
     }
 
-    public CredentialsDto getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(CredentialsDto admin) {
-        this.admin = admin;
-    }
 }

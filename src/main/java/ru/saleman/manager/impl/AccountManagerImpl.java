@@ -50,14 +50,14 @@ public class AccountManagerImpl implements AccountManager {
     @Override
     @Transactional
     public AccountVo createAccountInMicrosystem(String username, String password) {
-        MicrosystemDto microsystem = microsystemRepository.getMicrosystemByAdminCredentialsId(getCurrentAccount().getId());
+        MicrosystemDto microsystem = microsystemRepository.getMicrosystemByCredentialsId(getCurrentAccount().getId());
         CredentialsDto credentialsDto = new CredentialsDto();
         credentialsDto.setUsername(username);
         credentialsDto.setPassword(password);
         credentialsDto.setRole(roleRepository.getOne(SalemanConstants.Role.OPERATOR));
-        microsystem.setAdmin(credentialsDto);
+        credentialsDto.setMicrosystem(microsystem);
+        credentialsDto.setAdmin(false);
         credentialsDto = credentialsRepository.save(credentialsDto);
-        microsystemRepository.save(microsystem);
         return modelMapper.map(credentialsDto, AccountVo.class);
     }
 

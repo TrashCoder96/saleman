@@ -12,7 +12,7 @@ import ru.saleman.data.dto.MicrosystemDto;
 @Repository
 public interface MicrosystemRepository extends JpaRepository<MicrosystemDto, Long> {
 
-    @Query("SELECT md FROM MicrosystemDto md WHERE md.admin.id = :credentialsId")
-    MicrosystemDto getMicrosystemByAdminCredentialsId(@Param("credentialsId") Long credentialsId);
+    @Query("SELECT cd.microsystem FROM CredentialsDto cd WHERE cd.id = :credentialsId")
+    MicrosystemDto getMicrosystemByCredentialsId(@Param("credentialsId") Long credentialsId);
 
 }

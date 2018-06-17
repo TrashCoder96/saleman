@@ -13,15 +13,22 @@ public class CredentialsDto extends AbstractDto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "USERNAME")
     private String username;
 
-    @Column
+    @Column(name = "PASSWORD")
     private String password;
 
     @ManyToOne
     @JoinColumn(name="ROLE_ID")
     private RoleDto role;
+
+    @ManyToOne
+    @JoinColumn(name = "MICROSYSTEM_ID")
+    private MicrosystemDto microsystem;
+
+    @Column(name = "ADMIN")
+    private Boolean admin;
 
     public Long getId() {
         return id;
@@ -53,5 +60,21 @@ public class CredentialsDto extends AbstractDto {
 
     public void setRole(RoleDto role) {
         this.role = role;
+    }
+
+    public MicrosystemDto getMicrosystem() {
+        return microsystem;
+    }
+
+    public void setMicrosystem(MicrosystemDto microsystem) {
+        this.microsystem = microsystem;
+    }
+
+    public Boolean getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Boolean admin) {
+        this.admin = admin;
     }
 }

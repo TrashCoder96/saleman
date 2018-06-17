@@ -1,10 +1,7 @@
 package ru.saleman.rest.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.saleman.rest.ro.*;
 import ru.saleman.rest.service.AccountService;
 
@@ -19,7 +16,7 @@ public class AccountController {
     private AccountService accountService;
 
     @RequestMapping(value = "/account", method = RequestMethod.PUT)
-    public CreateAccountResponseRo createAccount(CreateAccountRequestRo request) {
+    public CreateAccountResponseRo createAccount(@RequestBody CreateAccountRequestRo request) {
         AccountRo account = accountService.create(request.getUsername(), request.getPassword());
         CreateAccountResponseRo response = new CreateAccountResponseRo();
         response.setAccount(account);
@@ -27,7 +24,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.POST)
-    public UpdateAccountResponseRo updateAccount(UpdateAccountRequestRo request) {
+    public UpdateAccountResponseRo updateAccount(@RequestBody UpdateAccountRequestRo request) {
         return null;
     }
 
