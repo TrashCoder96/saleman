@@ -11,16 +11,16 @@ import java.util.Collection;
  */
 public class AccountVo extends AbstractVo implements UserDetails {
 
-    private String id;
+    private Long id;
 
     private String username;
 
     private String password;
 
-    private Collection<? extends GrantedAuthority> authorities = new ArrayList<>();
+    private Collection<GrantedAuthority> authorities = new ArrayList<>();
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
+    public Collection<GrantedAuthority> getAuthorities() {
         return authorities;
     }
 
@@ -54,11 +54,11 @@ public class AccountVo extends AbstractVo implements UserDetails {
         return true;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

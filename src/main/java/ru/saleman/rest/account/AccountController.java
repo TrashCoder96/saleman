@@ -12,6 +12,7 @@ import ru.saleman.rest.service.AccountService;
  * Created by Ivan Timofeev on 10.06.2018.
  */
 @RestController
+@RequestMapping(value = "/api/v1")
 public class AccountController {
 
     @Autowired

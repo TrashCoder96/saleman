@@ -36,6 +36,7 @@ public class AccountManagerImpl implements AccountManager {
 
 
     @Override
+    @Transactional(readOnly = true)
     public AccountVo getAccount(Long id) {
         return modelMapper.map(credentialsRepository.getOne(id), AccountVo.class);
     }
